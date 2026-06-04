@@ -41,11 +41,13 @@ def extract_text_from_pdf(
 
     text = ""
 
-    for page in document:
+    for i in range(
+        document.page_count
+    ):
 
-        page_text = page.get_text(
-            "text"
-        )
+        page = document.load_page(i)
+
+        page_text = page.get_text("text")
 
         if isinstance(
             page_text,
