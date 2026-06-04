@@ -1,3 +1,31 @@
-.env*
+# Python
 __pycache__/
+*.pyc
+
+# Virtual Environment
+.env
+.venv/
+venv/
+
+# Conda
+.conda/
+
+# VS Code
 .vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# # Artifacts
+# artifacts/*.pkl
+
+# Testing
+.pytest_cache/
+
+# Build
+dist/
+build/

@@ -13,21 +13,18 @@ def artifact_info():
         or artifacts.metadata is None
     ):
         return {
-            "error": "Artifacts not loaded"
+            "loaded": False
         }
 
     return {
+        "loaded": True,
         "skills": len(
             artifacts.skill_gap_engine[
                 "skill_vocabulary"
             ]
         ),
         "industries":
-            artifacts.metadata[
-                "industries"
-            ],
+            artifacts.metadata["industries"],
         "version":
-            artifacts.metadata[
-                "version"
-            ]
+            artifacts.metadata["version"],
     }
