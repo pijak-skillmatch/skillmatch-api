@@ -13,3 +13,8 @@ API_VERSION = os.getenv(
     "API_VERSION",
     "1.0.0"
 )
+
+FRONTEND_URL = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:3000"
+)

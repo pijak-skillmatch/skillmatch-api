@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 
-from app.core.artifacts import artifacts
+from app.core.artifacts import (
+    artifacts,
+)
 
 router = APIRouter()
 
@@ -10,6 +12,12 @@ def health_check():
 
     return {
         "status": "healthy",
+
         "artifacts_loaded":
-            artifacts.industry_model is not None
+            bool(
+                artifacts.skill_gap_engine
+            ),
+
+        "version":
+            "1.0.0",
     }

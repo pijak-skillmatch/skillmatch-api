@@ -4,6 +4,7 @@ from typing import Any
 import joblib
 import pickle
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 ARTIFACT_DIR = BASE_DIR / "artifacts"
@@ -11,19 +12,15 @@ ARTIFACT_DIR = BASE_DIR / "artifacts"
 
 class ArtifactManager:
 
-    tfidf: Any
-    industry_model: Any
-
-    skill_gap_engine: dict[str, Any] | None
-    metadata: dict[str, Any] | None
-
     def __init__(self):
 
-        self.tfidf = None
-        self.industry_model = None
+        self.tfidf: Any = None
 
-        self.skill_gap_engine = None
-        self.metadata = None
+        self.industry_model: Any = None
+
+        self.skill_gap_engine: dict[str, Any] = {}
+        
+        self.metadata: dict[str, Any] = {}
 
     def load(self):
 
