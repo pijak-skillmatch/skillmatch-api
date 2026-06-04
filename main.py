@@ -1,17 +1,28 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
-from app.core.config import (
-    APP_NAME,
-    API_VERSION
+from app.core.artifacts import artifacts
+
+from app.api.health import router as health_router
+
+from app.api.debug import (
+    router as debug_router
 )
 
-from app.api.health import (
-    router as health_router
-)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+
+    artifacts.load()
+
+    yield
+
 
 app = FastAPI(
-    title=APP_NAME,
-    version=API_VERSION
+    title="SkillMatch AI API",
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 app.include_router(
@@ -19,9 +30,7 @@ app.include_router(
     prefix="/api/v1"
 )
 
-@app.get("/")
-def root():
-
-    return {
-        "message": "SkillMatch AI API"
-    }
+app.include_router(
+    debug_router,
+    prefix="/api/v1/debug"
+)
