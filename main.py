@@ -8,6 +8,8 @@ from fastapi.middleware.cors import (
 from app.api.health import router as health_router
 from app.api.debug import router as debug_router
 from app.api.analyze import router as analyze_router
+from app.api.skills import router as skills_router
+from app.api.resume import router as resume_router
 
 from app.core.artifacts import artifacts
 from app.core.handlers import (
@@ -81,6 +83,17 @@ app.include_router(
     tags=["Analysis"],
 )
 
+app.include_router(
+    skills_router,
+    prefix="/api/v1",
+    tags=["Skills"],
+)
+
+app.include_router(
+    resume_router,
+    prefix="/api/v1",
+    tags=["Resume"],
+)
 
 @app.get("/")
 def root():
