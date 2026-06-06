@@ -19,6 +19,11 @@ FRONTEND_URL = os.getenv(
     "http://localhost:3000"
 )
 
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "sqlite:///./skillmatch.db"
+)
+
 ALLOWED_ORIGINS = [
 
     "http://localhost:3000",
@@ -28,3 +33,20 @@ ALLOWED_ORIGINS = [
     FRONTEND_URL,
 
 ]
+
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "your-secret-key"
+)
+
+ALGORITHM = os.getenv(
+    "ALGORITHM",
+    "HS256"
+)
+
+ACCESS_TOKEN_EXPIRE_MINUTES = int(
+    os.getenv(
+        "ACCESS_TOKEN_EXPIRE_MINUTES",
+        "1440"
+    )
+)
