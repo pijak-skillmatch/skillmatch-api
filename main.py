@@ -30,6 +30,10 @@ from app.api.auth import (
     router as auth_router,
 )
 
+from app.api.history import (
+    router as history_router,
+)
+
 from app.core.artifacts import (
     artifacts,
 )
@@ -147,6 +151,12 @@ app.include_router(
     auth_router,
     prefix="/api/v1/auth",
     tags=["Authentication"],
+)
+
+app.include_router(
+    history_router,
+    prefix="/api/v1/history",
+    tags=["History"],
 )
 
 # -------------------------------
